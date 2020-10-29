@@ -40,7 +40,7 @@
                 const color = new Color({ color: newLchab, type: 'lchab' });
 
                 let maxIterations = 200;
-                while (color.rgb.some((ch) => ch < 0) && maxIterations--) {
+                while (color.rgb.some((ch) => ch < 0 || ch > 255) && maxIterations--) {
                     color.lchab = setKey(color.lchab, 1, color.lchab[1] - .5);
                 }
 
