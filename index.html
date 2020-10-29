@@ -13,6 +13,13 @@
             h3 {
                 font-size: 1rem;
             }
+
+            label, .label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: .25em;
+                margin-top: .5em;
+            }
         </style>
     </head>
     <body>
@@ -30,11 +37,11 @@
 
         <h2>Result</h2>
 
-        <h3><label for="sass_variables">SCSS variables:</label></h3>
+        <label for="sass_variables">SCSS variables:</label>
         <textarea style="width: 100%; font-family: monospace; font-size: 1rem;" name="sass_variables"
                   id="sass_variables" rows="10">(palette not generated)</textarea>
 
-        <h3>Preview</h3>
+        <div class="label">Preview</div>
         <div id="preview">
             (palette not generated)
         </div>
