@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Color Palette Generator</title>
+        <style>
+            body {
+                max-width: 800px;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Color Palette Generator</h1>
+
+        <h2>Knobs</h2>
+
+        <form onsubmit="return cpg.generate(event);">
+            <label for="base_color">Base color:</label>
+            <input type="text" name="base_color" id="base_color" value="#7b68ee">
+            <label for="prefix">Variable prefix:</label>
+            <input type="text" name="prefix" id="prefix" value="primary">
+            <button type="submit">Generate</button>
+        </form>
+
+        <h2>Result</h2>
+
+        <h3><label for="sass_variables">SCSS variables:</label></h3>
+        <textarea style="width: 100%; font-family: monospace; font-size: 1rem;" name="sass_variables"
+                  id="sass_variables" rows="10">(palette not generated)</textarea>
+
+        <h3>Preview</h3>
+        <div id="preview">
+            (palette not generated)
+        </div>
+
+        <script src="ac-colors.min.js"></script>
+        <script src="cpg.js"></script>
+    </body>
+</html>
