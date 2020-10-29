@@ -10,14 +10,16 @@
                 baseColor = new Color({ color: baseColorString, type: 'hex' });
             } catch {
                 alert('Color must be in hex format');
-                return;
+                e.preventDefault();
+                return false;
             }
 
             // alert('L = ' + baseColor.lchab[0]);
 
+            const gamma = parseFloat(document.getElementById('gamma').value);
             const variants = [
-                { L: 90, aC: 1.00 },
-                { L: 80, aC: 1.05 },
+                { L: 91, aC: 1.00 },
+                { L: 82, aC: 1.05 },
                 { L: 70, aC: 1.10 },
                 { L: 60, aC: 1.15 },
                 { L: 50, aC: 1.20 },
@@ -34,7 +36,7 @@
 
             const colors = variants.map((variant) => {
                 const newLchab = baseColor.lchab.slice();
-                newLchab[0] = variant.L;
+                newLchab[0] = (variant.L / 100) ** gamma * 100;
                 newLchab[1] = baseColor.lchab[1] * variant.aC;
 
                 const color = new Color({ color: newLchab, type: 'lchab' });
@@ -57,7 +59,7 @@
 
             document.getElementById('sass_variables').textContent = colors
                 .map((color, index) => {
-                    return `$${prefix}${index.toString().padStart(2, '0')}: ${color.hexString};`;
+                    return `$${prefix}${(index + 1).toString().padStart(2, '0')}: ${color.hexString};`;
                 })
                 .join('\n');
 
